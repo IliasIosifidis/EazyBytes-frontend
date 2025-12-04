@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 
-export const piniaStore = defineStore('store', {
+export const textureStore = defineStore('texture', {
   state: () => {
   },
   actions: {
