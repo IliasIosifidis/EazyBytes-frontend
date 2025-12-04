@@ -1,0 +1,13 @@
+{
+  "projectId": "9f60fc90",
+  "projectName": "vue-frontend",
+  "enabledLibraryNames": [],
+  "enableComponentCompletion": true,
+  "enableAttributeCompletion": true,
+  "enableEventCompletion": true,
+  "enableSlotCompletion": true,
+  "enableHoverDocumentation": true,
+  "enableRightClickDocumentation": true,
+  "enableCaching": true,
+  "enableDebugMode": false
+}
