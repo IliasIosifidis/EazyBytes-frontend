@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="p-4 bg-gray-100 flex items-center font-bold justify-center gap-30 outline-offset- outline-1 outline-stone-300 text-purple-700  text-shadow-violet-950 text-xl">
+  <div class="p-4 bg-gray-100 shadow-xl flex items-center f-ont-bold justify-center gap-30 outline-1 outline-stone-300 text-purple-700  text-shadow-violet-950 text-xl">
 <!--    Logo-->
     <div class="bg-gradient-to-r from-purple-600 to-rose-500 bg-clip-text text-transparent text-3xl font-bold">
       <h1 class="">Eazy Textures <i class="fa-solid fa-paint-roller"></i></h1>

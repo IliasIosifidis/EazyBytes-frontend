@@ -5,8 +5,7 @@ import path from "path";
 const sourceDir = "E:/other/CGAxis_textures"; // Folder to scan
 
 // Your Vue project's products folder:
-const productsPath =
-  "C:/Users/iosif/Desktop/Full-stack/fullstack-e-comerce EazyBytes/vue-frontend/e-com/src/assets/products/";
+const productsPath = "C:/Users/iosif/Desktop/Full-stack/fullstack-e-comerce EazyBytes/vue-frontend/e-com/src/assets/products/";
 
 // Output JSON file:
 const outputJson = path.join(productsPath, "products.json");
@@ -73,15 +72,14 @@ function scanFolder(folderPath) {
       const price = randomPrice(10, 50);
 
       // ---- IMAGE PATH ----
-      const outputImagePath =
-        productsPath + file.name; // same name, you can adjust if needed
-
+      const outputImagePath = path.join(productsPath, file.name);
+      const relativeImagePath = file.name;
       // Push to JSON array
       itemGenerator.push({
         name,
-        category,
+        categories: category,
         price,
-        image: outputImagePath,
+        image: relativeImagePath,
       });
 
       // Also copy the file into the products folder

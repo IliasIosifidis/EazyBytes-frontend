@@ -4,7 +4,7 @@
 
 <template>
   <footer class="mt-auto justify-center items-center text-center" >
-    Texture with us <i class="fa-solid fa-brush animate-pulse text-fuchsia-600"></i>
+    Texture with us <i class="fa-solid fa-brush animate-pulse text-rose-600"></i>
   </footer>
 </template>
 
