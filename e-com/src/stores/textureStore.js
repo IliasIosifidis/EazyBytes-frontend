@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import textureData from "../assets/products/products.json"
+// import textureData from "../assets/products/products.json"
 
 
 // USED WITH LOCAL, FRONT-END STORAGE. MOVED TO textureSpringStore

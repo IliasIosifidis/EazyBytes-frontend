@@ -1,8 +1,9 @@
 <script setup>
 import {useTextureStore} from "../stores/textureStore.js";
 import {ref} from "vue";
+import {useTextureSpringStore} from "../stores/textureSpringStore.js";
 
-const textureStore = useTextureStore()
+const textureStore = useTextureSpringStore()
 const open = ref(false)
 </script>
 

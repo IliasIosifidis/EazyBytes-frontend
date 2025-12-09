@@ -1,5 +1,4 @@
 import {defineStore} from "pinia";
-import textureData from "../assets/products/products.json"
 import axios from "axios";
 
 export const useTextureSpringStore = defineStore('textureSpring', {
