@@ -8,14 +8,16 @@ import TextureSpringList from "./Views/TextureSpringList.vue";
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
-    <HeaderView class="sticky top-0 "/>
-    <div class="flex">
-      <div class="flex flex-col border-r border-gray-400 ">
-        <SearchView/>
+  <div class="h-screen flex flex-col">
+    <HeaderView class="sticky top-0 z-10"/>
+    <div class="flex flex-1 overflow-hidden">
+      <div class="flex flex-col border-r border-gray-400 flex-none w-50 flex-none">
+        <SearchView class=""/>
         <CategoriesView/>
       </div>
-      <TextureSpringList class="flex-4"/>/>
+      <div class="flex-1 overflow-y-auto">
+        <TextureSpringList class="scroll-smooth"/>
+      </div>
     </div>
     <FooterView/>
   </div>

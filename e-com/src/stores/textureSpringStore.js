@@ -1,10 +1,11 @@
 import {defineStore} from "pinia";
-import axios from "axios";
+import http from "../api/http.js";
 
 export const useTextureSpringStore = defineStore('textureSpring', {
   state: () => ({
     textures: [],
     categories: [],
+    allTextures: [],
     filtered:false,
     isLoading: false,
     error:null,
@@ -15,27 +16,26 @@ export const useTextureSpringStore = defineStore('textureSpring', {
   actions: {
     async loadTextures(){
       try{
-        const res = await axios.get("http://localhost:8080/api/v1/textures")
+        const res = await http.get("/textures")
         this.textures = res.data
-        console.log("successfully load", res.data)
+        this.allTextures = res.data
       }catch (err){
         console.log("error", err)
-        this.error = "failed to load textures"
+        this.error = "failed to load textures - " + err
       }
     },
-    // filterCategory(cat) {
-    //   if (cat){
-    //     this.filtered = true
-    //     this.textures = textureData
-    //     this.textures = this.textures.filter(item => item.categories === cat)
-    //   } else {
-    //     this.textures = textureData
-    //   }
-    // },
-    // allCategories(){
-    //   this.textures = textureData
-    //   this.filtered = false
-    // },
+    filterCategory(cat) {
+      if (cat){
+        this.filtered = true
+        this.textures = this.allTextures.filter(item => item.categories === cat)
+      } else {
+        this.textures = this.allTextures
+      }
+    },
+    allCategories(){
+      this.textures = this.allTextures
+      this.filtered = false
+    },
     // setPage(page){
     //   if (page < 1) page = 1
     //   if (page > this.totalPages) page = this.totalPages
@@ -46,13 +46,13 @@ export const useTextureSpringStore = defineStore('textureSpring', {
     // },
     // prevPage(){
     //   if (this.currentPage > 1) this.currentPage--
-    // },
-    // searchTexture(s){
-    //   if (!s){
-    //     this.textures =  textureData
-    //   }
-    //   this.textures = this.textures.filter(item => item.name.toLowerCase().includes(s.trim()))
     // }
+    searchTexture(s){
+      if (!s){
+        this.textures = this.allTextures
+      }
+      this.textures = this.textures.filter(item => item.name.toLowerCase().includes(s.trim()))
+    }
   },
   // getters:{
   //   totalItems: (state) => state.textures.length,
