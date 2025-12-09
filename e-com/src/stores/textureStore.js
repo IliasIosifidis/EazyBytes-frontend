@@ -1,12 +1,13 @@
 import {defineStore} from "pinia";
 import textureData from "../assets/products/products.json"
 
+
+// USED WITH LOCAL, FRONT-END STORAGE. MOVED TO textureSpringStore
 export const useTextureStore = defineStore('texture', {
   state: () => ({
     textures: [],
     categories: [],
     filtered:false,
-    isLoading: false,
     error:null,
     pageSize: 20,
     currentPage: 1,
@@ -15,7 +16,6 @@ export const useTextureStore = defineStore('texture', {
   actions: {
     loadTextures() {
       try {
-        this.isLoading = true
         this.error = null
         this.textures = textureData
       } catch (err) {

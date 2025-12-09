@@ -3,8 +3,8 @@
 import HeaderView from "./Views/HeaderView.vue";
 import FooterView from "./Views/FooterView.vue";
 import CategoriesView from "./Views/CategoriesView.vue";
-import TextureList from "./Views/TextureList.vue";
 import SearchView from "./Views/SearchView.vue";
+import TextureSpringList from "./Views/TextureSpringList.vue";
 </script>
 
 <template>
@@ -15,7 +15,7 @@ import SearchView from "./Views/SearchView.vue";
         <SearchView/>
         <CategoriesView/>
       </div>
-      <TextureList class="flex-4"/>
+      <TextureSpringList class="flex-4"/>/>
     </div>
     <FooterView/>
   </div>
