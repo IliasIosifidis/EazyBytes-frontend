@@ -13,8 +13,8 @@ import {ref} from "vue";
   <div class="h-screen flex flex-col dark:bg-zinc-900 dark:text-zinc-100">
     <HeaderView class="sticky top-0 z-10"/>
     <div class="flex flex-1 overflow-hidden">
-      <div class="flex flex-col border-r border-gray-400 flex-none w-50 ">
-        <SearchView class=""/>
+      <div class="flex flex-col border-r border-gray-400 flex-none w-30 md:w-50">
+        <SearchView/>
         <CategoriesView/>
       </div>
       <div class="flex-1 overflow-y-auto ">

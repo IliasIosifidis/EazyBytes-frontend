@@ -10,17 +10,20 @@ onMounted(() =>{
 </script>
 
 <template>
+<div>
   <div>
-    <div class="p-2 mt-4 " v-if="!textureStore.error">
-      <h1 class="text-4xl my-5 font-bold italic text-center"> Find a texture that you like! </h1>
+    <div class="sm:p-2 p-0 sm:mt-4 mt-0" v-if="!textureStore.error">
+      <h1 class="sm:text-4xl tex-lg my-5 font-bold italic text-center"> Find a texture that you like! </h1>
       <div class="flex  flex-wrap gap-1">
-        <div class="p-1" v-for="texture in textureStore.textures">
-          <article class="border dark:bg-zinc-700 dark:text-zinc-50 border-gray-500 rounded-xl p-1 w-30 flex flex-col hover:scale-110 duration-150">
-            <img class="rounded-lg" :src="`/products/${texture.image_url}`">
-            <p class="text-gray-500 text-center dark:text-zinc-300 text-xs">{{ texture.categories }}</p>
-            <p class="text-center line-clamp-2 h-12">{{texture.name}}</p>
-            <p class="text-center text-md font-bold text-blue-500">${{texture.price}}</p>
-          </article>
+        <div class="sm:p-1" v-for="texture in textureStore.textures" :key="texture.id">
+          <RouterLink :to="{name:'texture-details', params: {id: texture.id}}" class="block">
+            <article class="border dark:bg-zinc-700 dark:text-zinc-50 border-gray-500 rounded-xl p-1 sm:w-30 w-20 flex flex-col hover:scale-110 duration-150">
+              <img class="rounded-lg" :src="`/products/${texture.image_url}`">
+              <p class="text-gray-500 text-center dark:text-zinc-300 text-sm sm:visible invisible sm:h-5 h-0">{{ texture.categories }}</p>
+              <p class="text-center sm:text-md text-xs line-clamp-2 sm:h-12">{{texture.name}}</p>
+              <p class="text-center sm:text-md text-xs font-bold text-blue-500">${{texture.price}}</p>
+            </article>
+          </RouterLink>
         </div>
       </div>
       <div class="flex items-center justify-center text-center gap-5 text-lg">
@@ -34,8 +37,7 @@ onMounted(() =>{
       <p class="italic text-2xl text-red-800">({{textureStore.error}})</p>
     </div>
   </div>
-
-
+</div>
 </template>
 
 <style scoped>

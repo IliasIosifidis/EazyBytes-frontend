@@ -33,11 +33,12 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       this.filtered = false
     },
     searchTexture(s){
+      console.log(s)
       if (!s){
         this.textures = this.allTextures
       }
       this.textures = this.textures.filter(item => item.name.toLowerCase().includes(s.trim()))
-    }
+    },
   },
 
 })
