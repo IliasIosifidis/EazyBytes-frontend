@@ -7,20 +7,18 @@ onMounted(() =>{
   if (textureStore.textures !== null)
     textureStore.loadTextures()
 })
-
-
 </script>
 
 <template>
   <div>
-    <div class="p-2 mt-4" v-if="!textureStore.error">
+    <div class="p-2 mt-4 " v-if="!textureStore.error">
       <h1 class="text-4xl my-5 font-bold italic text-center"> Find a texture that you like! </h1>
-      <div class="flex bg-white flex-wrap gap-1">
+      <div class="flex  flex-wrap gap-1">
         <div class="p-1" v-for="texture in textureStore.textures">
-          <article class="border bg-white border-gray-500 rounded-xl p-1 w-30 flex flex-col hover:scale-110 duration-150">
-            <img :src="`/products/${texture.image_url}`">
-            <p class="text-gray-500 text-xs">{{ texture.categories }}</p>
-            <p class="text-center line-clamp-2">{{texture.name}}</p>
+          <article class="border dark:bg-zinc-700 dark:text-zinc-50 border-gray-500 rounded-xl p-1 w-30 flex flex-col hover:scale-110 duration-150">
+            <img class="rounded-lg" :src="`/products/${texture.image_url}`">
+            <p class="text-gray-500 text-center dark:text-zinc-300 text-xs">{{ texture.categories }}</p>
+            <p class="text-center line-clamp-2 h-12">{{texture.name}}</p>
             <p class="text-center text-md font-bold text-blue-500">${{texture.price}}</p>
           </article>
         </div>
