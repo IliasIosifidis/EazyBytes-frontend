@@ -8,16 +8,43 @@ export const useTextureSpringStore = defineStore('textureSpring', {
     allTextures: [],
     darkMode: 'light',
     error:null,
+    page: 2,
+    size: 25,
+    priceSort: "",
+    selectedCategory: "",
+    totalPages:"",
+    isFirst:false,
+    isLast:false,
   }),
   actions: {
     async loadTextures(){
       try{
-        const res = await http.get("http://localhost:8080/api/v1/textures")
-        this.textures = res.data
-        this.allTextures = res.data
+        const res = await http.get("http://localhost:8080/api/v1/textures", {
+          params: {
+            page: this.page,
+            size: this.size,
+            category: this.selectedCategory,
+            priceSort: this.priceSort
+          }
+        })
+        this.textures = res.data.content
+        this.allTextures = res.data.content
+        this.totalPages = res.data.totalPages
+        this.page = res.data.number
+        this.isFirst = res.data.first
+        this.isLast = res.data.last
+        console.log(res.data)
       }catch (err){
         console.log("error ", err)
         this.error = "Failed to load textures - " + err
+      }
+    },
+    async loadCategories(){
+      try {
+        const res = await http.get("http://localhost:8080/api/v1/categories")
+        this.categories = res.data
+      } catch (err) {
+        this.error = "Failed to load Categories"
       }
     },
     filterCategory(cat) {
@@ -39,6 +66,18 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       }
       this.textures = this.textures.filter(item => item.name.toLowerCase().includes(s.trim()))
     },
+    async nextPage(){
+      if (!this.isLast) {
+        this.page += 1
+        await this.loadTextures()
+      }
+    },
+    async prevPage(){
+      if (!this.isFirst){
+        this.page -=1
+        await this.loadTextures()
+      }
+    }
   },
   getters:{
     categories(state){
@@ -46,5 +85,4 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       return Array.from(uniqueCat)
     }
   }
-
 })

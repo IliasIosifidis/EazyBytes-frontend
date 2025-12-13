@@ -5,6 +5,7 @@ import {useTextureSpringStore} from "../stores/textureSpringStore.js";
 const textureStore = useTextureSpringStore()
 onMounted(() =>{
   if (textureStore.textures !== null)
+    textureStore.loadCategories()
     textureStore.loadTextures()
 })
 </script>
@@ -13,6 +14,7 @@ onMounted(() =>{
 <div>
   <div>
     <div class="sm:p-2 p-0 sm:mt-4 mt-0" v-if="!textureStore.error">
+<!--      Textures List-->
       <h1 class="sm:text-4xl tex-lg my-5 font-bold italic text-center"> Find a texture that you like! </h1>
       <div class="flex  flex-wrap gap-1">
         <div class="sm:p-1" v-for="texture in textureStore.textures" :key="texture.id">
@@ -26,6 +28,7 @@ onMounted(() =>{
           </RouterLink>
         </div>
       </div>
+<!--      Pagination-->
       <div class="flex items-center justify-center text-center gap-5 text-lg">
         <button class="cursor-pointer" @click="textureStore.prevPage()"><i class="text-sm text-gray-700 fa-solid fa-backward"></i>PrevPage</button>
         <p>{{textureStore.currentPage}} of {{textureStore.totalPages}}</p>

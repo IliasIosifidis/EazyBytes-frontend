@@ -11,7 +11,7 @@ const open = ref(false)
   <div class="cursor-pointer flex whitespace-nowrap text-lg font-bold">
     <div class="flex flex-col">
       <div class="rounded-l hover:bg-red-400 hover:text-yellow-100" v-if="textureStore.filtered" >
-        <button class="cursor-pointer " @click="textureStore.allCategories()">All Categories <i class="text-xl fa-solid fa-circle-xmark"></i></button>
+        <button class="cursor-pointer" @click="textureStore.allCategories()">All Categories <i class="text-xl fa-solid fa-circle-xmark"></i></button>
       </div>
       <p class="px-0 sm:px-2 text-lg sm:text-2xl text-gray-700 dark:text-zinc-100"
          @click="open=!open">Categories <i :class="['sm:text-lg text-sm fa-solid fa-angles-right', open? 'rotate-90 duration-300':'rotate-0 duration-400']"></i></p>
