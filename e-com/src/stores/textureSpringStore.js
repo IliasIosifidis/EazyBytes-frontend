@@ -16,24 +16,14 @@ export const useTextureSpringStore = defineStore('textureSpring', {
         this.textures = res.data
         this.allTextures = res.data
       }catch (err){
-        console.log("error", err)
+        console.log("error ", err)
         this.error = "Failed to load textures - " + err
-      }
-    },
-    async loadCategories(){
-      try{
-        const res = await http.get("http://localhost:8080/api/v1/categories")
-        this.categories = res.data
-        // console.log(res.data)
-      }catch (error){
-        console.log(error)
-        this.error = "Failed to load Categories"
       }
     },
     filterCategory(cat) {
       if (cat){
         this.filtered = true
-        this.textures = this.allTextures.filter(item => item.category === cat)
+        this.textures = this.allTextures.filter(item => item.category.replace("Physical","").replace("4K","").replace("5","").trim() === cat)
       } else {
         this.textures = this.allTextures
       }
@@ -50,5 +40,11 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       this.textures = this.textures.filter(item => item.name.toLowerCase().includes(s.trim()))
     },
   },
+  getters:{
+    categories(state){
+      const uniqueCat = new Set(state.allTextures.map(t => t.category.replace("Physical","").replace("4K","").replace("5","").trim()))
+      return Array.from(uniqueCat)
+    }
+  }
 
 })

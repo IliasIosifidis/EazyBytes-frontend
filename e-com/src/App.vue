@@ -8,10 +8,11 @@ import SearchView from "./Views/SearchView.vue";
 </script>
 
 <template>
+
   <div class="h-screen flex flex-col dark:bg-zinc-900 dark:text-zinc-100">
     <HeaderView class="sticky top-0 z-10"/>
     <div class="flex flex-1 overflow-hidden">
-      <div class="flex flex-col border-r border-gray-400 flex-none w-30 md:w-50">
+      <div class="flex flex-col border-r border-gray-400 flex-none w-30 md:w-50 overflow-y-auto">
         <SearchView/>
         <CategoriesView/>
       </div>
@@ -19,6 +20,7 @@ import SearchView from "./Views/SearchView.vue";
         <RouterView/>
       </div>
     </div>
+
     <FooterView/>
   </div>
 
