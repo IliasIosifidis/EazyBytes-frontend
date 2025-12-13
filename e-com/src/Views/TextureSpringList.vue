@@ -18,8 +18,8 @@ onMounted(() =>{
         <div class="sm:p-1" v-for="texture in textureStore.textures" :key="texture.id">
           <RouterLink :to="{name:'texture-details', params: {id: texture.id}}" class="block">
             <article class="border dark:bg-zinc-700 dark:text-zinc-50 border-gray-500 rounded-xl p-1 sm:w-30 w-20 flex flex-col hover:scale-110 duration-150">
-              <img class="rounded-lg" :src="`/products/${texture.image_url}`">
-              <p class="text-gray-500 text-center dark:text-zinc-300 text-sm sm:visible invisible sm:h-5 h-0">{{ texture.categories }}</p>
+              <img class="rounded-lg" :src="`/products/${texture.imageUrl}`">
+              <p class="text-gray-500 text-center dark:text-zinc-300 text-sm sm:visible invisible sm:h-5 h-0">{{ texture.category }}</p>
               <p class="text-center sm:text-md text-xs line-clamp-2 sm:h-12">{{texture.name}}</p>
               <p class="text-center sm:text-md text-xs font-bold text-blue-500">${{texture.price}}</p>
             </article>

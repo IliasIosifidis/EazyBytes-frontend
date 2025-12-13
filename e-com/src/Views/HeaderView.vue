@@ -2,7 +2,6 @@
 import {useTextureSpringStore} from "../stores/textureSpringStore.js";
 import {ref} from "vue";
 
-const store = useTextureSpringStore
 const isDark = ref(false)
 const toggleDark = () => {
   isDark.value = !isDark.value

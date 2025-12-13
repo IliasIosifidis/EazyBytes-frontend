@@ -4,8 +4,6 @@ import HeaderView from "./Views/HeaderView.vue";
 import FooterView from "./Views/FooterView.vue";
 import CategoriesView from "./Views/CategoriesView.vue";
 import SearchView from "./Views/SearchView.vue";
-import TextureSpringList from "./Views/TextureSpringList.vue";
-import {ref} from "vue";
 
 </script>
 

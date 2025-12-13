@@ -19,12 +19,12 @@ const quantity = ref(1)
 <div class="dark:bg-zinc-900 p-5 sm:p-2 h-dvh">
   <div class="sm:flex sm:flex-row flex flex-col h-130 bg-slate-100 sm:h-1/2 w-1/2 min-h-30 sm:min-h-100 min-w-60 sm:min-w-120 dark:bg-zinc-600 rounded-2xl border border-slate-400">
     <div class="bg-white sm:rounded-l-2xl rounded-2xl">
-      <img class="p-1 w-full h-full object-contain grow" :src="`/products/${texture.image_url}`">
+      <img class="p-1 w-full h-full object-contain grow" :src="`/products/${texture.imageUrl}`">
     </div>
 
     <div class="grow flex flex-col text-center gap-4 sm:gap-1 p-2 sm:p-6 justify-between">
       <p class="text-xl font-bold sm:text-2xl">{{texture.name}}</p>
-      <p class="text-lg sm:text-xl dark:text-slate-100 text-slate-600">Category: {{texture.categories}}</p>
+      <p class="text-lg sm:text-xl dark:text-slate-100 text-slate-600">Category: {{texture.category}}</p>
       <p class="text-lg  sm:text-xl ">Price: <span class=" text-blue-600 dark:text-blue-400 text-lg sm:text-xl ">${{texture.price}}</span></p>
 
       <div class=" items-center">
