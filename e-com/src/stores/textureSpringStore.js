@@ -8,7 +8,7 @@ export const useTextureSpringStore = defineStore('textureSpring', {
     allTextures: [],
     darkMode: 'light',
     error:null,
-    page: 2,
+    page: 0,
     size: 25,
     priceSort: "",
     selectedCategory: "",
@@ -47,17 +47,22 @@ export const useTextureSpringStore = defineStore('textureSpring', {
         this.error = "Failed to load Categories"
       }
     },
-    filterCategory(cat) {
+    async filterCategory(cat) {
       if (cat){
         this.filtered = true
-        this.textures = this.allTextures.filter(item => item.category.replace("Physical","").replace("4K","").replace("5","").trim() === cat)
+        this.selectedCategory = cat
+        console.log(cat)
+        await this.loadTextures()
       } else {
-        this.textures = this.allTextures
+        this.this.selectedCategory = ""
       }
     },
-    allCategories(){
+    async allCategories(){
       this.textures = this.allTextures
       this.filtered = false
+      this.selectedCategory = ""
+      this.page = 0
+      await this.loadTextures()
     },
     searchTexture(s){
       console.log(s)
@@ -79,10 +84,4 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       }
     }
   },
-  getters:{
-    categories(state){
-      const uniqueCat = new Set(state.allTextures.map(t => t.category.replace("Physical","").replace("4K","").replace("5","").trim()))
-      return Array.from(uniqueCat)
-    }
-  }
 })
