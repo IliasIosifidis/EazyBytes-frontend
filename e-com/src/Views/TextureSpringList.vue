@@ -1,6 +1,6 @@
 <script setup>
 import {onMounted} from "vue";
-import {useTextureSpringStore} from "../stores/textureSpringStore.js";
+import {useTextureSpringStore} from "../stores/TextureSpringStore.js";
 
 const textureStore = useTextureSpringStore()
 onMounted(() =>{

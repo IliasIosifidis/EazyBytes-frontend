@@ -1,5 +1,5 @@
 <script setup>
-import {useTextureSpringStore} from "../stores/textureSpringStore.js";
+import {useTextureSpringStore} from "../stores/TextureSpringStore.js";
 import {computed, ref} from "vue";
 
 const props = defineProps({

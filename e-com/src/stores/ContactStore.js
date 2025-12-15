@@ -21,7 +21,7 @@ export const useContactStore = defineStore('contact', {
     async sendContact(){
       this.loading = true
       this.error = null
-      this.succless = null
+      this.success = null
       try {
         const res = await http.post("http://localhost:8080/api/v1/contacts", this.form)
         this.success = "Message sent!"

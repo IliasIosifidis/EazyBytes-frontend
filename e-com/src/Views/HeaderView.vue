@@ -1,13 +1,20 @@
 <script setup>
-import {useTextureSpringStore} from "../stores/textureSpringStore.js";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import {useUserStore} from "../stores/UserStore.js";
 
-const isDark = ref(false)
+const isDark = ref(localStorage.getItem("app:theme") === "dark")
+const userStore = useUserStore()
+
+onMounted(() => {
+  document.documentElement.classList.toggle('dark', isDark.value)
+})
+
 const toggleDark = () => {
   isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark', isDark.value)
+  const theme = isDark.value ? "dark" : "light"
+  localStorage.setItem("app:theme", theme)
+  document.documentElement.classList.toggle("dark", isDark.value)
 }
-
 </script>
 
 <template>
@@ -21,7 +28,10 @@ const toggleDark = () => {
       <RouterLink class="hover:transform hover:scale-120 duration-100" to="/">Home</RouterLink>
       <RouterLink class="hover:transform hover:scale-120 duration-100" to="/about">About</RouterLink>
       <RouterLink class="hover:transform hover:scale-120 duration-100 " to="/contact">Contact</RouterLink>
-      <RouterLink class="hover:transform hover:scale-120 duration-100" to="Login">Login</RouterLink>
+      <RouterLink class="hover:transform hover:scale-120 duration-100" to="Login">
+        <span v-if="!userStore.loggedIn">Login</span>
+        <span v-else class="text-emerald-600"><i class="fa-solid fa-person"></i>{{userStore.userName}}</span>
+      </RouterLink>
       <div class="">
         <h1 class="hover:transform hover:scale-120 duration-100" v-if="isDark" ><i class="fa-solid text-yellow-400 fa-sun hover:text-shadow-sm text-shadow-yellow-500" @click="toggleDark"></i></h1>
         <h1 class="hover:transform hover:scale-120 duration-100" v-if="!isDark"><i class="fa-solid text-purple-900 fa-moon hover:text-shadow-lg text-shadow-purple-500" @click="toggleDark"></i></h1>

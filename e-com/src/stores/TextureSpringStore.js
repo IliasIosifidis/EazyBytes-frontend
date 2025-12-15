@@ -33,7 +33,6 @@ export const useTextureSpringStore = defineStore('textureSpring', {
         this.page = res.data.number
         this.isFirst = res.data.first
         this.isLast = res.data.last
-        console.log(res.data)
       }catch (err){
         console.log("error ", err)
         this.error = "Failed to load textures - " + err
