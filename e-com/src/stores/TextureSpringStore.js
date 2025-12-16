@@ -4,6 +4,7 @@ import http from "../api/http.js";
 export const useTextureSpringStore = defineStore('textureSpring', {
   state: () => ({
     categories: [],
+    singleTexture:"",
     textures: [],
     allTextures: [],
     darkMode: 'light',
@@ -19,7 +20,7 @@ export const useTextureSpringStore = defineStore('textureSpring', {
   actions: {
     async loadTextures(){
       try{
-        const res = await http.get("http://localhost:8080/api/v1/textures", {
+        const res = await http.get("/textures", {
           params: {
             page: this.page,
             size: this.size,
@@ -40,7 +41,7 @@ export const useTextureSpringStore = defineStore('textureSpring', {
     },
     async loadCategories(){
       try {
-        const res = await http.get("http://localhost:8080/api/v1/categories")
+        const res = await http.get("/categories")
         this.categories = res.data
       } catch (err) {
         this.error = "Failed to load Categories"
@@ -50,7 +51,6 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       if (cat){
         this.filtered = true
         this.selectedCategory = cat
-        console.log(cat)
         await this.loadTextures()
       } else {
         this.this.selectedCategory = ""
@@ -64,11 +64,14 @@ export const useTextureSpringStore = defineStore('textureSpring', {
       await this.loadTextures()
     },
     searchTexture(s){
-      console.log(s)
       if (!s){
         this.textures = this.allTextures
       }
       this.textures = this.textures.filter(item => item.name.toLowerCase().includes(s.trim()))
+    },
+    async textureFromDb(textureId){
+      const res = await http.get(`/textures/${textureId}`)
+      this.singleTexture = res.data
     },
     async nextPage(){
       if (!this.isLast) {

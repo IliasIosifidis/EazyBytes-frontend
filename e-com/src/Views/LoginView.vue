@@ -1,4 +1,4 @@
-<script setup>
+<script setup xmlns:dark="http://www.w3.org/1999/xhtml">
 import {useUserStore} from "../stores/UserStore.js";
 
 const store = useUserStore()
@@ -41,6 +41,18 @@ const store = useUserStore()
         </div>
       </form>
     </div>
+
+<!--  LogOut-->
+  <div v-if="store.loggedIn">
+    <div class=" flex items-center justify-center p-6">
+      <div class="flex flex-col gap-2 bg-slate-100 dark:bg-slate-800 border border-slate-500 dark:border-slate-700 p-6 rounded-xl">
+        <h1 class="text-3xl text-center">Log out</h1>
+        <button type="submit" class="shadow-sm hover:shadow-md shadow-rose-800 bg-rose-600 hover:bg-rose-500 py-1 px-2 text-xl text-yellow-200 hover:text-yellow-300 rounded-lg hover:cursor-pointer hover:transform hover:scale-105 duration-150 mt-4" @click="store.logOut()">Log out</button>
+      </div>
+    </div>
+
+  </div>
+
 </template>
 
 <style scoped>

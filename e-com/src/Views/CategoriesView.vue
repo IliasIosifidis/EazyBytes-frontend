@@ -16,7 +16,7 @@ const open = ref(false)
       <p class="px-0 sm:px-2 text-lg sm:text-2xl text-gray-700 dark:text-zinc-100"
          @click="open=!open">Categories <i :class="['sm:text-lg text-sm fa-solid fa-angles-right', open? 'rotate-90 duration-300':'rotate-0 duration-400']"></i></p>
       <div class="p-2 rounded-l rounded-2xl hover:bg-amber-300 hover:text-rose-800 overflow-hidden transition-all duration-400" :class="[open?'max-h opacity-100':'max-h-0 opacity-0 -translate-y-100 scale-x-0 scale-y-0']" v-for="cat in textureStore.categories" :key="cat">
-        <p class="ml-5" @click="textureStore.filterCategory(cat)">{{cat}}</p>
+        <p class="ml-2" @click="textureStore.filterCategory(cat)">{{cat}}</p>
       </div>
 
     </div>

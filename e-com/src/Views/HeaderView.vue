@@ -28,9 +28,9 @@ const toggleDark = () => {
       <RouterLink class="hover:transform hover:scale-120 duration-100" to="/">Home</RouterLink>
       <RouterLink class="hover:transform hover:scale-120 duration-100" to="/about">About</RouterLink>
       <RouterLink class="hover:transform hover:scale-120 duration-100 " to="/contact">Contact</RouterLink>
-      <RouterLink class="hover:transform hover:scale-120 duration-100" to="Login">
+      <RouterLink class="hover:transform hover:scale-120 duration-100" to="/Login">
         <span v-if="!userStore.loggedIn">Login</span>
-        <span v-else class="text-emerald-600"><i class="fa-solid fa-person"></i>{{userStore.userName}}</span>
+        <span v-else class="text-emerald-600"><i class="fa-solid fa-person"></i>{{userStore.user.name}}</span>
       </RouterLink>
       <div class="">
         <h1 class="hover:transform hover:scale-120 duration-100" v-if="isDark" ><i class="fa-solid text-yellow-400 fa-sun hover:text-shadow-sm text-shadow-yellow-500" @click="toggleDark"></i></h1>
@@ -38,7 +38,9 @@ const toggleDark = () => {
       </div>
     </header>
 <!--    Basket icon-->
-    <div class="hover:transform hover:scale-120 duration-100 sm:text-4xl cursor-pointer"><i class="fa-solid fa-cart-shopping"></i></div>
+    <RouterLink to="/cart">
+      <div class="hover:transform hover:scale-120 duration-100 sm:text-4xl cursor-pointer"><i class="fa-solid fa-cart-shopping"></i></div>
+    </RouterLink>
   </div>
 
 </template>

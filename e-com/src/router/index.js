@@ -5,12 +5,14 @@ import AboutView from '../views/AboutView.vue'
 import ContactView from "../Views/ContactView.vue";
 import LoginView from "../Views/LoginView.vue";
 import TextureDetailsView from '../views/TextureDetailsView.vue'
+import CartView from "../Views/CartView.vue";
 
 const routes = [
   {path: '/',name: 'home',component: HomeView},
   {path: '/about',name: 'about',component: AboutView},
   {path: '/contact',name: 'contact',component: ContactView},
   {path: '/login',name: 'login',component: LoginView},
+  {path: '/cart',name: 'cart',component: CartView},
   {path: '/textures/:id',name: 'texture-details',component: TextureDetailsView,props: true}
 ]
 

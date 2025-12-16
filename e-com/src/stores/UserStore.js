@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import http from "../api/http.js";
+import {useCartStore} from "./CartStore.js";
 
 export const useUserStore = defineStore("user",{
   state: () => ({
@@ -13,7 +14,7 @@ export const useUserStore = defineStore("user",{
       email:"",
       password:"",
     },
-    userName:"",
+    user:null,
     repeatPassword:"",
     token:"",
     loggedIn:false,
@@ -27,7 +28,7 @@ export const useUserStore = defineStore("user",{
       this.success = null
       try{
         const res = await http.post(
-          "http://localhost:8080/api/v1/auth/login",
+          "/auth/login",
           this.signInForm,
           {withCredentials: true}
         )
@@ -40,6 +41,8 @@ export const useUserStore = defineStore("user",{
         this.signInForm.email = ""
         this.signInForm.password = ""
         this.success = "Logged in successfully!"
+        const cartStore = useCartStore()
+        await cartStore.loadCart()
         alert(this.success)
         this.error = null
       }catch(err){
@@ -70,5 +73,21 @@ export const useUserStore = defineStore("user",{
         this.showSignUp = false
       }
     },
+    async logOut(){
+      const res = await http.post("/auth/logout")
+
+      this.loggedIn = false
+      this.user = res.data
+    },
+    async restoreSession(){
+      try{
+        const res = await http.get("/auth/me",{withCredentials: true})
+        this.loggedIn = true
+        this.user = res.data
+      } catch {
+        this.loggedIn = false
+        this.user = null
+      }
+    }
   }
 })
