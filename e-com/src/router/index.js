@@ -8,12 +8,12 @@ import TextureDetailsView from '../views/TextureDetailsView.vue'
 import CartView from "../Views/CartView.vue";
 
 const routes = [
-  {path: '/',name: 'home',component: HomeView},
-  {path: '/about',name: 'about',component: AboutView},
-  {path: '/contact',name: 'contact',component: ContactView},
-  {path: '/login',name: 'login',component: LoginView},
-  {path: '/cart',name: 'cart',component: CartView},
-  {path: '/textures/:id',name: 'texture-details',component: TextureDetailsView,props: true}
+  {path: '/',name: 'Home',component: HomeView},
+  {path: '/about',name: 'About',component: AboutView},
+  {path: '/contact',name: 'Contact',component: ContactView},
+  {path: '/login',name: 'Login',component: LoginView},
+  {path: '/cart',name: 'Cart',component: CartView},
+  {path: '/textures/:id',name: 'Texture-details',component: TextureDetailsView,props: true}
 ]
 
 const router = createRouter({
