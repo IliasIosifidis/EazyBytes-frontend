@@ -1,8 +1,8 @@
 <script setup>
-import HeaderView from "./Views/HeaderView.vue";
-import FooterView from "./Views/FooterView.vue";
-import CategoriesView from "./Views/CategoriesView.vue";
-import SearchView from "./Views/SearchView.vue";
+import HeaderView from "./views/HeaderView.vue";
+import FooterView from "./views/FooterView.vue";
+import CategoriesView from "./views/CategoriesView.vue";
+import SearchView from "./views/SearchView.vue";
 import {onMounted} from "vue";
 import {useUserStore} from "./stores/UserStore.js";
 
