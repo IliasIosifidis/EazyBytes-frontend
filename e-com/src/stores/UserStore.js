@@ -85,6 +85,7 @@ export const useUserStore = defineStore("user",{
         this.loggedIn = true
         this.user = res.data
       } catch {
+        // if (err?.response?.status === 401) return
         this.loggedIn = false
         this.user = null
       }
