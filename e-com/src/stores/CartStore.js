@@ -12,7 +12,7 @@ export const useCartStore = defineStore("cart",{
     async loadCart(){
       this.loading = true
       try{
-        const res = await http.get("http://localhost:8080/api/v1/cart")
+        const res = await http.get("/cart")
         this.cart = res.data
         this.total = res.data.total
       } catch (e) {
@@ -22,7 +22,7 @@ export const useCartStore = defineStore("cart",{
       }
     },
     async addToCart(textureId, qty = 1){
-      const res = await http.post("http://localhost:8080/api/v1/cart/items", {textureId, qty})
+      const res = await http.post("/cart/items", {textureId, qty})
       this.cart = res.data
     },
     async updateQty(itemId, qty){
@@ -31,11 +31,11 @@ export const useCartStore = defineStore("cart",{
       await this.loadCart()
     },
     async removeItem(itemId){
-      const res = await http.delete(`http://localhost:8080/api/v1/cart/items/${itemId}`)
+      const res = await http.delete(`/cart/items/${itemId}`)
       this.cart = res.data
     },
     async clearCart(){
-      const res =await http.delete("http://localhost:8080/api/v1/cart")
+      const res =await http.delete("/cart")
       this.cart = res.data
     }
   }
