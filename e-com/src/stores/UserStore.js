@@ -59,7 +59,7 @@ export const useUserStore = defineStore("user",{
         alert(this.error)
         return}
       try{
-        const res = await http.post("http://localhost:8080/api/v1/auth/register", this.signUpForm)
+        const res = await http.post("/auth/register", this.signUpForm)
         this.success = "Registered Successfully!"
         this.registered = true
         this.error = null
