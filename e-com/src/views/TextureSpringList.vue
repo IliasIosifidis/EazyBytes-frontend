@@ -31,7 +31,7 @@ onMounted(() =>{
 <!--      Pagination-->
       <div class="flex items-center justify-center text-center gap-5 text-lg text-black  dark:text-zinc-100 ">
         <button class="cursor-pointer hover:font-bold dark:hover:text-white" @click="textureStore.prevPage()"><i class="text-sm text-gray-700 fa-solid fa-backward "></i>PrevPage</button>
-        <p>{{textureStore.page + 1}} of {{textureStore.totalPages + 1}}</p>
+        <p>{{textureStore.page + 1}} of {{textureStore.totalPages}}</p>
         <button class="cursor-pointer hover:font-bold dark:hover:text-white" @click="textureStore.nextPage()">NextPage<i class="text-sm text-gray-700 fa-solid fa-forward"></i></button>
       </div>
     </div>
